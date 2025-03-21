@@ -1,0 +1,56 @@
+[gd_scene load_steps=3 format=3 uid="uid://w7rem8q65322"]
+
+[ext_resource type="Script" path="res://scripts/level_transition.gd" id="1_uxr4t"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_bnvqr"]
+font_size = 64
+font_color = Color(1, 0.8, 0, 1)
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 0.5)
+
+[node name="LevelTransition" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uxr4t")
+next_scene = "Level 2"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0.219608, 0.701961)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -100.0
+offset_right = 300.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Level Selesai!"
+label_settings = SubResource("LabelSettings_bnvqr")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Bersiap untuk Level Berikutnya..."
+horizontal_alignment = 1
