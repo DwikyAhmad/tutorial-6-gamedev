@@ -9,6 +9,7 @@ func _on_Area_Trigger_body_entered(body):
         if current_scene == sceneName:
             Global.lives -= 1
             if (Global.lives == 0):
+                Global.lives = 3
                 return get_tree().change_scene_to_file(str("res://scenes/Game Over.tscn"))
             else:
                 return get_tree().change_scene_to_file(str("res://scenes/" + sceneName + ".tscn"))

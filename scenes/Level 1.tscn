@@ -1,10 +1,20 @@
-[gd_scene load_steps=6 format=4 uid="uid://damkuqx1xbloy"]
+[gd_scene load_steps=8 format=4 uid="uid://damkuqx1xbloy"]
 
-[ext_resource type="PackedScene" path="res://scenes/Player.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://bleeks6hguk33" path="res://scenes/Player.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://bls6pqt8flug3" path="res://scenes/tile_map.tscn" id="2_ixamt"]
 [ext_resource type="Texture2D" uid="uid://tpq0ge2lruix" path="res://assets/Familiar Looking Rocket.png" id="3"]
 [ext_resource type="PackedScene" uid="uid://bul5fybv2rytg" path="res://scenes/Area Trigger.tscn" id="4_enfm1"]
 [ext_resource type="PackedScene" uid="uid://dwm2bps1ibmue" path="res://scenes/Life Counter.tscn" id="5_76iqu"]
+[ext_resource type="PackedScene" uid="uid://dfta6d6ehooyw" path="res://scenes/Spawner.tscn" id="6_vwg8j"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ne7b6"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(2000, 0, 1)
+spread = 20.0
+gravity = Vector3(-500, 500, 0)
+scale_max = 10.0
+color = Color(0.517647, 0.65098, 0.713726, 1)
 
 [node name="Level 1" type="Node2D"]
 
@@ -13,7 +23,7 @@ position = Vector2(144.475, 47.5724)
 speed = 300
 
 [node name="TileMap" parent="." instance=ExtResource("2_ixamt")]
-tile_map_data = PackedByteArray("AAACAAMAAAAAAAEAAAADAAMAAAAAAAEAAAAEAAMAAAAAAAEAAAABAAMAAAAAAAEAAAAFAAMAAAAAAAAAAAAFAAQAAAAAAAAAAAAGAAQAAAAAAAAAAAAGAAUAAAAAAAAAAAAGAAYAAAAAAAAAAAAHAAYAAAAAAAAAAAAHAAcAAAAAAAAAAAAIAAcAAAAAAAAAAAAIAAgAAAAAAAAAAAAJAAgAAAAAAAAAAAAKAAgAAAAAAAAAAAAKAAkAAAAAAAAAAAALAAkAAAAAAAAAAAAMAAkAAAAAAAAAAAANAAkAAAAAAAAAAAAOAAkAAAAAAAAAAAAPAAkAAAAAAAAAAAAQAAkAAAAAAAAAAAARAAkAAAAAAAAAAAARAAoAAAAAAAAAAAASAAoAAAAAAAAAAAATAAoAAAAAAAAAAAAUAAoAAAAAAAAAAAAVAAoAAAAAAAAAAAAWAAoAAAAAAAAAAAAXAAoAAAAAAAAAAAAYAAoAAAAAAAAAAAAZAAoAAAAAAAAAAAAaAAoAAAAAAAAAAAAbAAoAAAAAAAAAAAAcAAoAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAACAAMAAAAAAAEAAAADAAMAAAAAAAEAAAAEAAMAAAAAAAEAAAABAAMAAAAAAAEAAAAFAAMAAAAAAAAAAAAFAAQAAAAAAAAAAAAGAAQAAAAAAAAAAAAGAAUAAAAAAAAAAAAGAAYAAAAAAAAAAAAHAAYAAAAAAAAAAAAHAAcAAAAAAAAAAAAIAAcAAAAAAAAAAAAKAAkAAAAAAAAAAAALAAkAAAAAAAAAAAAMAAkAAAAAAAAAAAANAAkAAAAAAAAAAAAOAAkAAAAAAAAAAAAPAAkAAAAAAAAAAAAQAAkAAAAAAAAAAAARAAkAAAAAAAAAAAARAAoAAAAAAAAAAAASAAoAAAAAAAAAAAATAAoAAAAAAAAAAAAUAAoAAAAAAAAAAAAVAAoAAAAAAAAAAAAWAAoAAAAAAAAAAAAXAAoAAAAAAAAAAAAYAAoAAAAAAAAAAAAZAAoAAAAAAAAAAAAaAAoAAAAAAAAAAAAbAAoAAAAAAAAAAAAcAAoAAAAAAAAAAAA=")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1662.2, 394.623)
@@ -30,6 +40,18 @@ sceneName = "Level 2"
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="LifeCounter" parent="CanvasLayer" instance=ExtResource("5_76iqu")]
-offset_top = 2.0
-offset_right = -965.0
-offset_bottom = -577.0
+offset_left = 2.0
+offset_top = -336.0
+offset_right = 189.0
+offset_bottom = -267.0
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_ne7b6")
+lifetime = 4.0
+visibility_rect = Rect2(-100, -100, 2000, 1000)
+trail_enabled = true
+
+[node name="Spawner" parent="." instance=ExtResource("6_vwg8j")]
+position = Vector2(1116, 544)
+spawn_rate = 1.0
