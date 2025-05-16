@@ -1,19 +1,15 @@
 # Dwiky Ahmad Megananta - 2206829206
 
-## Latihan: Membuat Menu Utama
-Saya mencoba memainkan dan memodifikasi scene mainmenu yang diberikan oleh template, dari situ saya memahami cara membuat basic layout layaknya seperti membuat layout standar pada web development saat menggunakan flexbox
+## TUTORIAL 8
 
-## Latihan: Latihan: Membuat GUI Life Counter
-Untuk membuat GUI life counter diperlukan global variable yang akan dibuat di `global.gd` lalu script itu akan dimasukkan ke setting project sebagai variable global yang akan bisa diakses oleh scene `Life Counter` setelah itu dibuat script `livelabel.gd` yang akan mengupdate text gui berdasarkan variable global lives tersebut, yang akan diset berkurang setiap player jatuh ke jurang
+Pada tutorial ini, saya membuat particle rain dengan menggunakan GPUParticles2D yang ditambahkan ke scene level 1 dari tutorial 6 yang saya kerjakan sebelumnya, untuk membuat partikel 
+efek hujan diperlukan pembuatan `Process Material` yang nanti akan diatur amount dan lifetime, amount akan mengatur berapa banyak partikel
+yang dikeluarkan dan lifetime mengatur banyaknya emisi per detik, setelah itu setting seperti scale saya atur, dan mengatur spawnnya
+seperti bentuk emission menjadi box dan mengatur box extentsnya. Lalu saya atur warna particlenya untuk menjadi warna biru untuk
+menyerupai hujan dan mengatur gravitasinya sehingga arah jatuhnya miring ke kiri bawah, lalu saya mengatur Visibility Rectnya untuk memastikan
+seluruh daerah level untuk dipastikan render sehingga kamera character selalu di daerah render particle.
 
-## Latihan: Membuat layar game over
-Untuk membuat tampilan layar ini cukup buat scene baru game over dan membuat tampilan berdasarkan node yang telah dipelajari saat membuat menu utama
-
-## Latihan mandiri: Tombol pada layar game over untuk kembali ke menu utama.
-Saya membuat node LinkButton title Go Back to Main Menu yang diberi script `link_button.gd` dengan variable Scene to di set ke mainmenu pada scene game over
-
-## Latihan mandiri: Fitur Select Stage
-Saya membuat scene baru yaitu Stage Select yang dimana ditengahnya akan diberi label dengan title Choose Level dan dibawahnya ada 2 LinkButton yang satu mengarah ke scene level 1 dan satunya lagi ke scene level 2 menggunakan `link_button.gd`
-
-## Latihan mandiri: Layar dan efek transisi antar level, dari level 1 ke level 2.
-Saya membuat scene baru `Level Transition` yang akan berfungsi sebagai page transisi nanti ketika menyelesaikan level 1 dan melanjutkan ke level 2, Lalu saya membuat script `level_transition.gd` yang di mana saya membuat animasi fade in fade out menggunakan tween yang dimana setelah fade in akan memanggil callback fade out, dan setelah fade out akan memanggil callback change scene yang di mana akan dilanjutkan ke scene selanjutnya yaitu next level.
+Lalu untuk membuat trail, saya menggunakan asset `brickGrey_small.png` untuk texture di particle baru yang dibuat di scene character,
+setelah itu gravitasi akan dibuat ke atas dan diatur sedemikian rupa seperti partikle muncul dari kaki character, lalu pada bagian scriptnya
+saya atur sehingga trail hanya muncul ketika player berjalan, menciptakan trail effect. Lalu pada bagian game balancing saya menggunakan scene spawner
+yang diberikan oleh template tutorial dan mengatur spawn rate sedemikian rupa sehingga game terasa challenging, tetapi tidak impossible.
